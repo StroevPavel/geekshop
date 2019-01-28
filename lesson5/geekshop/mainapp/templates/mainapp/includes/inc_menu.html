@@ -1,0 +1,20 @@
+<ul class="category-menu">
+  <li>
+    <a href="{% url 'catalog:category' 0 %}" 
+       style="{% if request.resolver_match.kwargs.pk == 0 %}
+                text-decoration: underline
+              {% endif %}">
+      All
+    </a>
+  </li>
+  {% for link in links_menu %}
+    <li>
+      <a href="{% url 'catalog:category' link.pk %}" 
+         style="{% if request.resolver_match.kwargs.pk|add:'0' == link.pk %}
+                  text-decoration: underline
+                {% endif %}">
+        {{ link.name }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
