@@ -1,0 +1,114 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+		<div class="content">
+			<hr>
+			<h1>{{ product.name }}</h1>
+			<div class="product">
+				<div class="product-image">
+					<img src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
+				</div>
+				<div class="product-short-description">
+					<h2>Описание товара</h2>
+					<p>
+					{{ product.short_desc }}
+					</p>
+					<div class="unit-price">
+						&#8381; {{ product.price }}
+					</div>
+					<p>
+					На складе: {{ product.quantity }} шт.
+					</p>
+					<a href="{% url 'basket:add' product.pk %}" class="product-btn-buy">Купить</a>
+				</div>
+			</div>
+			<div class="product-full-description">
+				<h2>Подробное описание товара</h2>
+				<p>
+					{{ product.description }}
+				</p>
+				<h2>Характеристики товара</h2>
+				<table>
+					<tr class="tech-first">
+						<td>
+							<span>Параметры</span>
+						</td>
+						<td>
+							<span>Значения</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="tech-name">
+							<span>Хэшрейт:</span>
+						</td>
+						<td class="tech-value">
+							<span>13.5 TH/s</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="tech-name">
+							<span>Количество CPU:</span>
+						</td>
+						<td class="tech-value">
+							<span>189 (BM1387)</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="tech-name">
+							<span>Алгоритм майнинга:</span>
+						</td>
+						<td class="tech-value">
+							<span>SHA-256</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="tech-name">
+							<span>Уровень шума:</span>
+						</td>
+						<td class="tech-value">
+							<span>80 дБ</span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="tech-name">
+							<span>Особенности:</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="tech-name">
+							<span>Рабочая температура:</span>
+						</td>
+						<td class="tech-value">
+							<span>5 С до 40 С</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="tech-name">
+							<span>Энергопотребление:</span>
+						</td>
+						<td class="tech-value">
+							<span>1300 Вт</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="tech-name">
+							<span>Вес:</span>
+						</td>
+						<td class="tech-value">
+							<span>5,5 кг</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="tech-name">
+							<span>Размеры (В х Ш х Г), мм</span>
+						</td>
+						<td class="tech-value">
+							<span>158 х 350 х 135</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<hr>
+		</div>
+{% endblock %}

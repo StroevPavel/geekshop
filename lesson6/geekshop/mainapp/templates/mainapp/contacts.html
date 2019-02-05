@@ -1,0 +1,42 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+		<div class="content">
+			<hr>
+			<h1>Контакты</h1>
+			<div class="contacts">
+				<div class="letter">
+					<form action="contacts.html" method="post" class="contacts-form">
+						<fieldset>
+							<legend>Напишите нам</legend>
+							<input type="text" name="user" placeholder="Введите Ваше имя">
+							<br>
+							<input type="email" name="email" placeholder="Введите адрес элетронной почты">
+							<br>
+							<input type="text" name="point" placeholder="Тема сообщения">
+							<p>
+							Суть Вашего письма:
+							</p>
+							<textarea name="letter" cols="20" rows="5" id="textletter"></textarea>
+							<br>
+							<input type="submit" value="Отправить">
+						</fieldset>
+					</form>
+				</div>
+				<div class="yandex-map">
+					<h2>Адрес:</h2>
+					<p>
+						<b>Телефон: </b>+7 495 222 22 32
+						<br>
+						<b>Адрес: </b>г. Москва, проспект Академика Сахарова, 12
+						<br>
+						<b>Email: </b>contact@miningshop.com
+					</p>
+
+					<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Adc3762901f0d1891d95505eb9ddaecd3b4e901dd6254391e0a8e0ea4959a41e7&amp;width=100%25&amp;height=374&amp;lang=ru_RU&amp;scroll=true"></script>
+				</div>
+			</div>
+			<hr>
+		</div>
+{% endblock %}

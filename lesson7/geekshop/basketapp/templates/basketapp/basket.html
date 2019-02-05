@@ -1,0 +1,43 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="content">
+	<hr>
+	<h1>Моя корзина</h1>
+
+	<div class="basket_list">
+		{% for item in basket %}
+		<div class="basket_record">
+			<div>
+				<img src="/media/{{ item.product.image }}" alt="{{ item.product.short_desc }}">
+			</div>
+			<div class="product_name">
+				<b> {{ item.product.category.name }}</b>&nbsp{{ item.product.name }}
+				<p>
+					{{ item.product.short_desc }}
+				</p>
+			</div>
+			<span class="product_price">&#8381; {{ item.product.price }}&nbspруб</span>
+			<input type="number" name="{{ item.pk }}" min="0" value="{{ item.quantity }}">
+			<span class="product_cost">{{ item.cost }}&nbspруб</span>
+			<button>
+				<a href="{% url 'basket:remove' item.pk %}" class="">
+					удалить
+				</a>
+			</button>
+		</div>
+		{% endfor %}
+
+		{% if basket %}
+		<div class="basket_summary">
+			В корзине {{ basket.0.total_quantity }} товаров общей стоимостью {{ basket.0.total_cost }} руб
+		</div>
+		{% endif %}
+	        
+		<button class="btn-round">
+			<a href="{% url 'main' %}">на главную</a>
+		</button>
+	</div>
+</div>
+{% endblock %}

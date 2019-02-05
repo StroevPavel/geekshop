@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<title>Maning mashines shop</title>
+</head>
+<body>
+	<div class="container">
+
+		<div class="header">
+			<img src="{% static 'img/logo.png' %}" alt="Магазин оборудования для майнинга">
+			<div class="header-text">
+				Mining<br>machines
+			</div>		
+			<ul class="menu">
+				<li><a href="{% url 'main' %}">Главная</a></li>
+				<li><a href="{% url 'catalog:index' %}">Каталог</a></li>
+				<li><a href="{% url 'contacts' %}">Контакты</a></li>
+			</ul>
+			<div class="basket-logo">
+				Basket: {{ basket|length }}
+			</div>
+			<div class="auth">
+			    {% if user.is_authenticated %}
+			    	User:&nbsp<a href="{% url 'auth:edit' %}">{{ user.username|default:'default ' }}&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+			      	<a href="{% url 'auth:logout' %}"> Log out</a>
+			    {% else %}
+			     	<a href="{% url 'auth:register' %}">Register</a> 
+			     	&nbsp or &nbsp
+			     	<a href="{% url 'auth:login' %}">Log in</a>
+			    {% endif %}
+			</div>	
+		</div>
+
+		{% block content %}
+		{% endblock %}
+
+		<div class="footer">
+			&copy; Все права защищены
+		</div>
+	</div>
+</body>
+</body>
+</html>
