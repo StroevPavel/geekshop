@@ -1,0 +1,33 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+		<div class="content">
+			<hr>
+			<h1>Каталог</h1>
+			<div class="catalog">
+
+				{% for product in products %}
+				<div class="unit">
+					<div class="unit-name">
+						{{ product.name }}
+					</div>
+					<div class="unit-img">
+						<img src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
+					</div>
+					<div class="unit-description">
+						{{ product.description }}
+					</div>
+					<div class="unit-price">
+						&#8381; {{ product.price }}
+					</div>
+					<div class="unit-product">
+						<a href="{% url 'good' %}">Подробнее...</a>
+					</div>
+				</div>
+				{% endfor %}
+
+			</div>
+			<hr>
+		</div>
+{% endblock %}
